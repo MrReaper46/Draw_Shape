@@ -23,7 +23,7 @@ namespace Draw_Shape
                     break;
                     return;
                 }
-                else if (currentMenu == 0 && retry < 3)
+                else if (currentMenu == 0)
                 {
                     Console.WriteLine("Welcome!");
                     Console.WriteLine("------------------------------------");
