@@ -14,11 +14,13 @@ namespace Draw_Shape
             int i, j;
             int retry = 0;
             string input = "Input";
+            string corner = "Corner";
             while (input != "0")
             {
                 if (retry >= 3)
                 {
                     Console.WriteLine("No more retries");
+                    break;
                     return;
                 }
                 else if (currentMenu == 0 && retry < 3)
@@ -89,17 +91,13 @@ namespace Draw_Shape
                         case "0":
                             Environment.Exit(0);
                             break;
-                        case null:
-                            Console.WriteLine("No input... Try again");
-                            retry++;
-                            break;
                         default:
                             Console.WriteLine("Invalid input!");
                             retry++;
                             break;
                     }
                 }
-                else if (currentMenu == 1 && retry < 3)
+                else if (currentMenu == 1)
                 {
                     Console.WriteLine("------------------------------------");
                     Console.WriteLine("Select your square triangle");
@@ -113,72 +111,72 @@ namespace Draw_Shape
                     Console.WriteLine("------------------------------------");
                     Console.Write("Input your choice: ");
                     input = Console.ReadLine();
-                    for (i = 0; i < 5; i++)
+                    switch (input)
                     {
-                        switch (input)
-                        {
-                            case "1":
-                                Console.WriteLine("Print a Top-Left Square Triangle");
-                                for (i = 1; i <= 5; i++)
+                        case "1":
+                            Console.WriteLine("Print a Top-Left Square Triangle");
+                            for (i = 1; i <= 5; i++)
+                            {
+                                for (j = 1; j <= 6 - i; j++)
                                 {
-                                    for (j = 1; j <= 6 - i; j++)
-                                    {
-                                        Console.Write("* ");
-                                    }
-                                    Console.WriteLine();
+                                    Console.Write("* ");
                                 }
-                                break;
-                            case "2":
-                                Console.WriteLine("Print a Top-Right Square Triangle");
-                                for (i = 1; i <= 5; i++)
+                                Console.WriteLine();
+                            }
+                            break;
+                        case "2":
+                            Console.WriteLine("Print a Top-Right Square Triangle");
+                            for (i = 1; i <= 5; i++)
+                            {
+                                for (j = 2; j <= i; j++)
                                 {
-                                    for (j = 2; j <= i; j++)
-                                    {
-                                        Console.Write("  ");
-                                    }
-                                    for (j = 1; j <= 6 - i; j++)
-                                    {
-                                        Console.Write(" *");
-                                    }
-                                    Console.WriteLine();
+                                    Console.Write("  ");
                                 }
-                                break;
-                            case "3":
-                                Console.WriteLine("Print a Bottom-Left Square Triangle");
-                                for (i = 1; i <= 5; i++)
+                                for (j = 1; j <= 6 - i; j++)
                                 {
-                                    for (j = 1; j <= i; j++)
-                                    {
-                                        Console.Write("* ");
-                                    }
-                                    Console.WriteLine();
+                                    Console.Write(" *");
                                 }
-                                break;
-                            case "4":
-                                for (i = 1; i <= 5; i++)
+                                Console.WriteLine();
+                            }
+                            break;
+                        case "3":
+                            Console.WriteLine("Print a Bottom-Left Square Triangle");
+                            for (i = 1; i <= 5; i++)
+                            {
+                                for (j = 1; j <= i; j++)
                                 {
-                                    for (j = 2; j <= 6 - i; j++)
-                                    {
-                                        Console.Write("  ");
-                                    }
-                                    for (j = 1; j <= i; j++)
-                                    {
-                                        Console.Write(" *");
-                                    }
-                                    Console.WriteLine();
+                                    Console.Write("* ");
                                 }
-                                break;
-                            case "5":
-                                currentMenu = 0;
-                                break;
-                            default:
-                                Console.WriteLine("Invalid input!");
-                                retry++;
-                                break;
-                        }
+                                Console.WriteLine();
+                            }
+                            break;
+                        case "4":
+                            for (i = 1; i <= 5; i++)
+                            {
+                                for (j = 2; j <= 6 - i; j++)
+                                {
+                                    Console.Write("  ");
+                                }
+                                for (j = 1; j <= i; j++)
+                                {
+                                    Console.Write(" *");
+                                }
+                                Console.WriteLine();
+                            }
+                            break;
+                        case "5":
+                            currentMenu = 0;
+                            break;
+                        case "0":
+                            Environment.Exit(0);
+                            break;
+                        default:
+                            Console.WriteLine("Invalid input!");
+                            retry++;
+                            break;
                     }
-                    Console.WriteLine($"Your retries: {retry}");
                 }
+                //Console.WriteLine($"Your retries: {retry}");
                 //Console.WriteLine($"Current Menu is {currentMenu}");
                 Console.ReadKey();
                 Console.Clear();
