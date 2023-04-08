@@ -24,7 +24,6 @@ namespace Draw_Shape
                 else if (currentMenu == 0 && retry < 3)
                 {
                     Console.WriteLine("Welcome!");
-                    Console.ReadKey();
                     Console.WriteLine("------------------------------------");
                     Console.WriteLine("Menu");
                     Console.WriteLine("------------------------------------");
@@ -35,14 +34,13 @@ namespace Draw_Shape
                     Console.WriteLine("------------------------------------");
                     Console.Write("Input your choice: ");
                     input = Console.ReadLine();
-                    Console.WriteLine("------------------------------------");
                     switch (input)
                     {
                         case "1":
                             Console.WriteLine("Print a rectangle");
-                            for (i = 0; i < 3; i++)
+                            for (i = 0; i < 5; i++)
                             {
-                                for (j = 0; j < 10; j++)
+                                for (j = 0; j < 10 - i; j++)
                                 {
                                     if (i == 0 || i == 2)
                                     {
@@ -75,6 +73,18 @@ namespace Draw_Shape
                             break;
                         case "3":
                             Console.WriteLine("Print a isosceles triangle");
+                            for (i = 1; i <= 5; i++)
+                            {
+                                for (j = 2; j <= 6 - i; j++)
+                                {
+                                    Console.Write(" ");
+                                }
+                                for (j = 1; j <= i; j++)
+                                {
+                                    Console.Write("* ");
+                                }
+                                Console.WriteLine();
+                            }
                             break;
                         case "0":
                             Environment.Exit(0);
@@ -89,9 +99,8 @@ namespace Draw_Shape
                             break;
                     }
                 }
-                else if (currentMenu == 1)
+                else if (currentMenu == 1 && retry < 3)
                 {
-                    int corner = 0;
                     Console.WriteLine("------------------------------------");
                     Console.WriteLine("Select your square triangle");
                     Console.WriteLine("------------------------------------");
@@ -103,19 +112,74 @@ namespace Draw_Shape
                     Console.WriteLine("0. Exit");
                     Console.WriteLine("------------------------------------");
                     Console.Write("Input your choice: ");
-                    corner = Int32.Parse(Console.ReadLine());
-                    Console.WriteLine("------------------------------------");
+                    input = Console.ReadLine();
                     for (i = 0; i < 5; i++)
                     {
-                        switch (corner)
+                        switch (input)
                         {
-                            case 5:
+                            case "1":
+                                Console.WriteLine("Print a Top-Left Square Triangle");
+                                for (i = 1; i <= 5; i++)
+                                {
+                                    for (j = 1; j <= 6 - i; j++)
+                                    {
+                                        Console.Write("* ");
+                                    }
+                                    Console.WriteLine();
+                                }
+                                break;
+                            case "2":
+                                Console.WriteLine("Print a Top-Right Square Triangle");
+                                for (i = 1; i <= 5; i++)
+                                {
+                                    for (j = 2; j <= i; j++)
+                                    {
+                                        Console.Write("  ");
+                                    }
+                                    for (j = 1; j <= 6 - i; j++)
+                                    {
+                                        Console.Write(" *");
+                                    }
+                                    Console.WriteLine();
+                                }
+                                break;
+                            case "3":
+                                Console.WriteLine("Print a Bottom-Left Square Triangle");
+                                for (i = 1; i <= 5; i++)
+                                {
+                                    for (j = 1; j <= i; j++)
+                                    {
+                                        Console.Write("* ");
+                                    }
+                                    Console.WriteLine();
+                                }
+                                break;
+                            case "4":
+                                for (i = 1; i <= 5; i++)
+                                {
+                                    for (j = 2; j <= 6 - i; j++)
+                                    {
+                                        Console.Write("  ");
+                                    }
+                                    for (j = 1; j <= i; j++)
+                                    {
+                                        Console.Write(" *");
+                                    }
+                                    Console.WriteLine();
+                                }
+                                break;
+                            case "5":
                                 currentMenu = 0;
+                                break;
+                            default:
+                                Console.WriteLine("Invalid input!");
+                                retry++;
                                 break;
                         }
                     }
+                    Console.WriteLine($"Your retries: {retry}");
                 }
-                Console.WriteLine($"Current Menu is {currentMenu}");
+                //Console.WriteLine($"Current Menu is {currentMenu}");
                 Console.ReadKey();
                 Console.Clear();
             }
